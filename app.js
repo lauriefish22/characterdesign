@@ -14,7 +14,7 @@ const catchphraseButton = document.getElementById('catchphrase-button');
 let headCount = 0;
 let middleCount = 0;
 let bottomCount = 0;
-
+let catchphrases = [];
 // set state for all of the character's catchphrases
 
 headDropdown.addEventListener('change', () => {
@@ -41,19 +41,29 @@ bottomDropdown.addEventListener('change', () => {
     const bottomValue = bottomDropdown.value;
     // increment the bottom change count state
     bottomCount++;
-    bottomEl.style.backgroundImage = `url(./assets/${bottomValue}-bottom.png)`;
+    bottomEl.style.backgroundImage = `url(./assets/${bottomValue}-pants.png)`;
     // update the stats to show the new count (call displayStats() to do this work)
 });
 
 catchphraseButton.addEventListener('click', () => {
     // get the value of the catchphrase input
+    const word = catchphraseInput.value;
+
     // push the new catchphrase to the catchphrase array in state
-    // clear out the form input's value so it's empty to the user
-    // update the dom to show the new catchphrases (refactor to/call displayCatchphrases to do this work)
+    catchphrases.push(word);
+    catchphraseInput.value = '';
+    displayCatchphrases();
 });
+
+// clear out the form input's value so it's empty to the user
+
+// update the dom to show the new catchphrases (refactor to/call displayCatchphrases to do this work)
 
 function displayStats() {
     // text content of the reportEl to tell the user how many times they've changed each piece of the state
+    headEl.textContent = headCount;
+    middleEl.textContent = middleCount;
+    bottomEl.textContent = bottomCount;
 }
 
 function displayCatchphrases() {
