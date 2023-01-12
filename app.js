@@ -53,10 +53,6 @@ catchphraseButton.addEventListener('click', () => {
     catchphrases.push(word);
     catchphraseInputEl.value = '';
     displayCatchphrases();
-    const newElement = document.createElement('p');
-    newElement.classList.add('phrases');
-    newElement.textContent = catchphraseInputEl.value;
-    catchphraseEl.append(newElement);
 });
 
 // clear out the form input's value so it's empty to the user
@@ -76,4 +72,14 @@ function displayCatchphrases() {
     // and for each catchphrase
     // create an HTML element with the catchphrase as its text content
     // and append that HTML element to the cleared-out DOM
+    const newElement = document.createElement('p');
+    console.log('newElement', 'p');
+    newElement.classList.add('phrases');
+    newElement.textContent = catchphraseInputEl.value;
+    catchphraseInputEl.append(newElement);
+    catchphraseInputEl.textcontent = '';
+    let phrases = [];
+    for (let word of catchphrases) {
+        alert(word);
+    }
 }
