@@ -6,8 +6,8 @@ const headEl = document.getElementById('head');
 const middleEl = document.getElementById('middle');
 const bottomEl = document.getElementById('bottom');
 const reportEl = document.getElementById('report');
-const catchphrasesEl = document.getElementById('catchphrases');
-const catchphraseInput = document.getElementById('catchphrase-input');
+const catchphraseEl = document.getElementById('catchphrases');
+const catchphraseInputEl = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
 
 // set state for how many times the user changes the head, middle, and bottom
@@ -47,12 +47,16 @@ bottomDropdown.addEventListener('change', () => {
 
 catchphraseButton.addEventListener('click', () => {
     // get the value of the catchphrase input
-    const word = catchphraseInput.value;
+    const word = catchphraseInputEl.value;
 
     // push the new catchphrase to the catchphrase array in state
     catchphrases.push(word);
-    catchphraseInput.value = '';
+    catchphraseInputEl.value = '';
     displayCatchphrases();
+    const newElement = document.createElement('p');
+    newElement.classList.add('phrases');
+    newElement.textContent = catchphraseInputEl.value;
+    catchphraseEl.append(newElement);
 });
 
 // clear out the form input's value so it's empty to the user
